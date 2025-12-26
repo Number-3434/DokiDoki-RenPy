@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/01_imports.rpy", line 15: invalid syntax
-    err = Exception(f"Could not find the module '{target}'. Please add it to the 'requirements.txt' file, then run 'make install'.") from e
-                                                                                                                                         ^^^^
+File "game/tts.rpy", line 140: invalid syntax
+    except Exception as e:
+        ^^^^^^
 
 Ren'Py Version: Ren'Py 8.5.0.25111603
-Fri Dec 26 13:28:42 2025
+Fri Dec 26 16:32:55 2025

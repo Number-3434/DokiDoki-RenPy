@@ -1,6 +1,5 @@
-init -1 python:
-    import os
-    import sys
+init -65536 python:
+    import os, sys
 
     # Add packages from /lib to sys.path
     sys.path.insert(0, os.path.join(config.basedir, "lib"))
