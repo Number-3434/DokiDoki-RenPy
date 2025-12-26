@@ -1,3 +1,5 @@
+
+
 transform tcommon(x=640, z=0.80):
     yanchor 1.0 subpixel True
     on show:
@@ -6,6 +8,7 @@ transform tcommon(x=640, z=0.80):
         xcenter x yoffset -20
         easein .25 yoffset 0 zoom z*1.00 alpha 1.00
     on replace:
+
         alpha 1.00
         parallel:
             easein .25 xcenter x zoom z*1.00
@@ -18,6 +21,7 @@ transform tinstant(x=640, z=0.80):
 transform focus(x=640, z=0.80):
     yanchor 1.0 ypos 1.03 subpixel True
     on show:
+
         zoom z*0.95 alpha 0.00
         xcenter x yoffset -20
         easein .25 yoffset 0 zoom z*1.05 alpha 1.00
@@ -64,16 +68,18 @@ transform leftin(x=640, z=0.80):
     xcenter -300 yoffset 0 yanchor 1.0 ypos 1.03 zoom z*1.00 alpha 1.00 subpixel True
     easein .25 xcenter x
 
+
 transform thide(z=0.80):
     subpixel True
     transform_anchor True
     on hide:
-        easein .25 zoom z*0.95 alpha 0.00 yoffset -20
 
+        easein .25 zoom z*0.95 alpha 0.00 yoffset -20
 transform lhide:
     subpixel True
     on hide:
         easeout .25 xcenter -300
+
 
 transform t41:
     tcommon(200)
@@ -243,6 +249,7 @@ transform l22:
 transform l11:
     leftin(640)
 
+
 transform face(z=0.80, y=500):
     subpixel True
     xcenter 640
@@ -281,7 +288,9 @@ transform n_cg2_zoom:
     xoffset 0
     easeout 0.20 zoom 2.5 xoffset 200
 
+
 define dissolve = Dissolve(0.25)
+
 define dissolve_cg = Dissolve(0.75)
 define dissolve_scene = Dissolve(1.0)
 
@@ -307,9 +316,12 @@ define open_eyes = MultipleTransition([
 
 define trueblack = MultipleTransition([
     Solid("#000"), Pause(0.25),
-    Solid("#000")])
+    Solid("#000")
+    ])
+
 
 define wipeleft = ImageDissolve("images/menu/wipeleft.png", 0.5, ramplen=64)
+
 
 define wipeleft_scene = MultipleTransition([
     False, ImageDissolve("images/menu/wipeleft.png", 0.5, ramplen=64),
@@ -450,4 +462,4 @@ init python:
 transform malpha(a=1.00):
     i11
     alpha a
-
+# Decompiled by unrpyc: https://github.com/CensoredUsername/unrpyc

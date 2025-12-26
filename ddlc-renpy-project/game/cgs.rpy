@@ -6,15 +6,12 @@ image y_cg2_bg:
     "images/cg/y_cg2_bg1.png" with Dissolve(1)
     1
     repeat
-
 image y_cg2_base:
     "images/cg/y_cg2_base.png"
-
 image y_cg2_nochoc:
     "images/cg/y_cg2_nochoc.png"
     on hide:
         linear 0.5 alpha 0
-
 image y_cg2_details:
     "images/cg/y_cg2_details.png"
     alpha 1.00
@@ -30,7 +27,6 @@ image y_cg2_exp2:
     linear 0.5 alpha 1
     on hide:
         linear 0.5 alpha 0
-
 image y_cg2_exp3:
     "images/cg/y_cg2_exp3.png"
     alpha 0
@@ -58,7 +54,6 @@ image y_cg2_dust1:
         xoffset 100 yoffset -100
         linear 14.0 xoffset -100 yoffset 100
         repeat
-
 image y_cg2_dust2:
     "images/cg/y_cg2_dust2.png"
     subpixel True
@@ -79,7 +74,6 @@ image y_cg2_dust2:
         xoffset 100 yoffset -100
         linear 32.0 xoffset -100 yoffset 100
         repeat
-
 image y_cg2_dust3:
     "images/cg/y_cg2_dust3.png"
     subpixel True
@@ -126,6 +120,7 @@ image n_cg1_bg:
     "images/cg/n_cg1_bg.png"
 image n_cg1_base:
     "images/cg/n_cg1_base.png"
+
 image n_cg1_exp1:
     "images/cg/n_cg1_exp1.png"
 image n_cg1_exp2:
@@ -137,7 +132,7 @@ image n_cg1_exp4:
 image n_cg1_exp5:
     "images/cg/n_cg1_exp5.png"
 
-image n_cg1b = Composite((1280,720), (0,0), "images/cg/n_cg1b.png", (882,325), "n_rects1", (732,400), "n_rects2", (850,475), "n_rects3")
+image n_cg1b = LiveComposite((1280,720), (0,0), "images/cg/n_cg1b.png", (882,325), "n_rects1", (732,400), "n_rects2", (850,475), "n_rects3")
 
 image n_rects1:
     RectCluster(Solid("#000"), 12, 30, 30).sm
@@ -230,6 +225,7 @@ image y_kill = ConditionSwitch(
     "persistent.yuri_kill >= 260", "images/cg/y_kill/1c.png",
     "persistent.yuri_kill >= 200", "images/cg/y_kill/1b.png",
     "True", "images/cg/y_kill/1a.png",
+
     )
 
 transform s_kill_bg_start:
@@ -313,4 +309,4 @@ image s_kill2_zoom:
         linear 0.25 alpha 0.6
         linear 0.25 alpha 0.4
         repeat
-
+# Decompiled by unrpyc: https://github.com/CensoredUsername/unrpyc

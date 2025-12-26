@@ -482,13 +482,13 @@ The noise, it won't stop.
 Violent, grating waveforms
 Squeaking, screeching, piercing
 Sine, cosine, tangent
-        Like playing a chalkboard on a turntable
-                Like playing a vinyl on a pizza crust
+    Like playing a chalkboard on a turntable
+        Like playing a vinyl on a pizza crust
 An endless
 poem
 Of meaningless\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
 Load Me
-        """
+    """
     )
 
     poem_m22 = Poem(
@@ -499,7 +499,7 @@ The colors, they won't
 Bright, bea t ful c l rs
 Flash ng, exp nd ng, piercing
 Red, green, blue
-An    ndless
+An  ndless
 CACOPHONY
 Of meaningless
 noise
@@ -509,13 +509,13 @@ The noise, it won't STOP.
 Viol nt, grating w vef rms
 Sq e king, screech ng, piercing
 SINE, COSINE, TANGENT
-        Like play ng a ch lkboard on a t rntable
-                Like playing a KNIFE on a BREATHING RIBCAGE
- n    ndl ss
-p    m
-Of m    n ngl ss\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+    Like play ng a ch lkboard on a t rntable
+        Like playing a KNIFE on a BREATHING RIBCAGE
+ n  ndl ss
+p  m
+Of m  n ngl ss\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
 Delete Her
-        """
+    """
     )
 
     poem_m3 = Poem(
@@ -532,7 +532,7 @@ And all that was ever sought.
 And here I am,
 
 
-                            a feather
+              a feather
 
 
 Lost adrift the sky, victim of the currents of the wind.
@@ -582,7 +582,7 @@ Not all good times must come to an end."""
     )
 
 image paper = "images/bg/poem.jpg"
-image paper_glitch = Composite((1280, 720), (0, 0), "paper_glitch1", (0, 0), "paper_glitch2")
+image paper_glitch = LiveComposite((1280, 720), (0, 0), "paper_glitch1", (0, 0), "paper_glitch2")
 image paper_glitch1 = "images/bg/poem-glitch1.png"
 image paper_glitch2:
     "images/bg/poem-glitch2.png"
@@ -592,6 +592,7 @@ image paper_glitch2:
         yoffset 20
         0.05
         repeat
+
 
 transform paper_in:
     truecenter
@@ -612,7 +613,6 @@ screen poem(currentpoem, paper="paper"):
         draggable True
         has vbox
         null height 40
-
         if currentpoem.author == "yuri":
             if currentpoem.yuri_2:
                 text "[currentpoem.title]\n\n[currentpoem.text]" style "yuri_text"
@@ -626,24 +626,26 @@ screen poem(currentpoem, paper="paper"):
             text "[currentpoem.title]\n\n[currentpoem.text]" style "natsuki_text"
         elif currentpoem.author == "monika":
             text "[currentpoem.title]\n\n[currentpoem.text]" style "monika_text"
-
         null height 100
-
     vbar value YScrollValue(viewport="vp") style "poem_vbar"
+
+
 
 style poem_vbox:
     xalign 0.5
-
 style poem_viewport:
     xanchor 0
     xsize 720
     xpos 280
-
 style poem_vbar is vscrollbar:
     xpos 1000
     yalign 0.5
 
     ysize 700
+
+
+
+
 
 style yuri_text:
     font "gui/font/y1.ttf"
@@ -685,63 +687,41 @@ style monika_text:
     outlines []
 
 label showpoem(poem=None, music=True, track=None, revert_music=True, img=None, where=i11, paper=None):
-
     if poem == None:
         return
-
     play sound page_turn
-
     if music:
         $ currentpos = get_pos()
-
         if track:
             $ audio.t5b = "<from " + str(currentpos) + " loop 4.444>" + track
         else:
             $ audio.t5b = "<from " + str(currentpos) + " loop 4.444>bgm/5_" + poem.author + ".ogg"
-
         stop music fadeout 2.0
-
         $ renpy.music.play(audio.t5b, channel="music_poem", fadein=2.0, tight=True)
-
     window hide
-
     $ renpy.game.preferences.afm_enable = False
-
     if paper:
         show screen poem(poem, paper=paper)
     else:
         show screen poem(poem)
-
     if not persistent.first_poem:
         $ persistent.first_poem = True
-
         $ renpy.save_persistent()
-
         show expression "gui/poem_dismiss.png" as poem_dismiss:
             xpos 1050 ypos 590
     with Dissolve(1)
-
     $ pause()
-
     if img:
         $ renpy.hide(poem.author)
-
         $ renpy.show(img, at_list=[where])
-
     hide screen poem
     hide poem_dismiss
     with Dissolve(.5)
-
     window auto
-
     if music and revert_music:
         $ currentpos = get_pos(channel="music_poem")
-
         $ audio.t5c = "<from " + str(currentpos) + " loop 4.444>bgm/5.ogg"
-
         stop music_poem fadeout 2.0
-
         $ renpy.music.play(audio.t5c, fadein=2.0)
-
     return
-
+# Decompiled by unrpyc: https://github.com/CensoredUsername/unrpyc

@@ -202,6 +202,7 @@ image credits_header = ParameterizedText(style="credits_header", ypos=-40)
 image credits_text = ParameterizedText(style="credits_text", ypos=40)
 image monika_credits_text = ParameterizedText(style="monika_credits_text", xalign=0.5)
 
+
 transform credits_scroll:
     subpixel True
     yoffset 740
@@ -259,35 +260,30 @@ image mcredits_1a:
     "black"
     10.33
     Text("Every day,", style="monika_credits_text") with ImageDissolve("images/menu/wipeleft.png", 13.0, ramplen=4, alpha=False)
-
 image mcredits_1b:
     ypos credits_ypos
     xoffset -35
     "black"
     11.75
     Text("I imagine a future where", style="monika_credits_text") with ImageDissolve("images/menu/wipeleft.png", 12.0, ramplen=4, alpha=False)
-
 image mcredits_1c:
     ypos credits_ypos
     xoffset 170
     "black"
     13.76
     Text("I can be with you", style="monika_credits_text") with ImageDissolve("images/menu/wipeleft.png", 15.0, ramplen=4, alpha=False)
-
 image mcredits_2a:
     ypos credits_ypos + 50
     xoffset -226
     "black"
     19.45
     Text("In my hand", style="monika_credits_text") with ImageDissolve("images/menu/wipeleft.png", 13.0, ramplen=4, alpha=False)
-
 image mcredits_2b:
     ypos credits_ypos + 50
     xoffset -10
     "black"
     20.9
     Text(" is a pen that will write a poem", style="monika_credits_text") with ImageDissolve("images/menu/wipeleft.png", 9.0, ramplen=4, alpha=False)
-
 image mcredits_2c:
     ypos credits_ypos + 50
     xoffset 225
@@ -320,7 +316,6 @@ image mcredits_6a:
     "black"
     42.0
     Text(" What will it take", style="monika_credits_text") with ImageDissolve("images/menu/wipeleft.png", 10.0, ramplen=4, alpha=False)
-
 image mcredits_6b:
     ypos credits_ypos + 250
     xoffset 85
@@ -381,7 +376,6 @@ image end_glitch4:
         repeat
 
 label credits:
-
     $ persistent.autoload = "credits"
     $ renpy.save_persistent()
     $ config.keymap['game_menu'] = []
@@ -390,9 +384,7 @@ label credits:
     $ quick_menu = False
     $ config.skipping = False
     $ config.allow_skipping = False
-
     scene black
-
     play music "bgm/end-voice.ogg" noloop
 
     show noise zorder 9:
@@ -447,22 +439,15 @@ label credits:
             linear 15 ypos -500
             repeat
 
+
     pause 41
-
     scene black
-
     pause 0.5
-
     $ consolehistory = []
-
     call updateconsole ("renpy.music.play(\"ddlc.ogg\")", "Playing audio \"ddlc.ogg\"...")
-
     pause 1.0
-
     call hideconsole
-
     play music "<to 50.0>bgm/credits.ogg" noloop
-
     show mcredits_1a zorder 50
     show mcredits_1b zorder 49
     show mcredits_1c zorder 48
@@ -477,11 +462,9 @@ label credits:
     show mcredits_7 zorder 51
 
     pause 50
-
     jump credits2
 
 label credits2:
-
     python:
         sayoriTime = renpy.random.random() * 4 + 4
         natsukiTime = renpy.random.random() * 4 + 4
@@ -500,123 +483,93 @@ label credits2:
         yuriZoom = 1
         monikaZoom = 1
         imagenum = 0
-
     scene black
-
     $ consolehistory = []
-
     play music "<from 50.0>bgm/credits.ogg" noloop
-
     $ starttime = datetime.datetime.now()
-
     pause 0.88
-
     show credits_logo
-
     pause 9.12
-
     $ lockedtext = "" if persistent.clear[imagenum] else "_locked"
     $ if persistent.clearall: lockedtext = "_clearall"
     $ imagenum += 1
-
     show expression ("credits_cg1" + lockedtext) as credits_image_1 at credits_scroll_right
     show credits_header "Concept & Game Design" as credits_header_1 at credits_text_scroll_left
     show credits_text "Dan Salvato" as credits_text_1 at credits_text_scroll_left
-
     $ lockedtext = "" if persistent.clear[imagenum] else "_locked"
     $ if persistent.clearall: lockedtext = "_clearall"
     $ imagenum += 1
     $ pause(16.95 - (datetime.datetime.now() - starttime).total_seconds())
-
     if not persistent.clearall:
         call updateconsole ("os.remove(\"images/cg/n_cg1.png\")", "n_cg1.png deleted successfully.")
     else:
         call updateconsole_clearall ("os.remove(\"images/cg/n_cg1.png\")", "n_cg1.png deleted successfully.")
-
     show expression ("credits_cg2" + lockedtext) as credits_image_2 at credits_scroll_left
     show credits_header "Character Art" as credits_header_2 at credits_text_scroll_right
     show credits_text "Satchely" as credits_text_2 at credits_text_scroll_right
-
     $ lockedtext = "" if persistent.clear[imagenum] else "_locked"
     $ if persistent.clearall: lockedtext = "_clearall"
     $ imagenum += 1
     $ pause(26.05 - (datetime.datetime.now() - starttime).total_seconds())
-
     if not persistent.clearall:
         call updateconsole ("os.remove(\"images/cg/n_cg2.png\")", "n_cg2.png deleted successfully.")
     else:
         call updateconsole_clearall ("os.remove(\"images/cg/n_cg2.png\")", "n_cg2.png deleted successfully.")
-
     show expression ("credits_cg3" + lockedtext) as credits_image_1 at credits_scroll_right
     show credits_header "Background Art" as credits_header_1 at credits_text_scroll_left
     show credits_text "Velinquent" as credits_text_1 at credits_text_scroll_left
-
     $ lockedtext = "" if persistent.clear[imagenum] else "_locked"
     $ if persistent.clearall: lockedtext = "_clearall"
     $ imagenum += 1
     $ pause(35.15 - (datetime.datetime.now() - starttime).total_seconds())
-
     if not persistent.clearall:
         call updateconsole ("os.remove(\"images/cg/y_cg1.png\")", "y_cg1.png deleted successfully.")
     else:
         call updateconsole_clearall ("os.remove(\"images/cg/y_cg1.png\")", "y_cg1.png deleted successfully.")
-
     show expression ("credits_cg4" + lockedtext) as credits_image_2 at credits_scroll_left
     show credits_header "Writing" as credits_header_2 at credits_text_scroll_right
     show credits_text "Dan Salvato" as credits_text_2 at credits_text_scroll_right
-
     $ lockedtext = "" if persistent.clear[imagenum] else "_locked"
     $ if persistent.clearall: lockedtext = "_clearall"
     $ imagenum += 1
     $ pause(44.25 - (datetime.datetime.now() - starttime).total_seconds())
-
     if not persistent.clearall:
         call updateconsole ("os.remove(\"images/cg/y_cg2.png\")", "y_cg2.png deleted successfully.")
     else:
         call updateconsole_clearall ("os.remove(\"images/cg/y_cg2.png\")", "y_cg2.png deleted successfully.")
-
     show expression ("credits_cg5" + lockedtext) as credits_image_1 at credits_scroll_right
     show credits_header "Music" as credits_header_1 at credits_text_scroll_left
     show credits_text "Dan Salvato" as credits_text_1 at credits_text_scroll_left
-
     $ lockedtext = "" if persistent.clear[imagenum] else "_locked"
     $ if persistent.clearall: lockedtext = "_clearall"
     $ imagenum += 1
     $ pause(53.35 - (datetime.datetime.now() - starttime).total_seconds())
-
     if not persistent.clearall:
         call updateconsole ("os.remove(\"images/cg/n_cg3.png\")", "n_cg3.png deleted successfully.")
     else:
         call updateconsole_clearall ("os.remove(\"images/cg/n_cg3.png\")", "n_cg3.png deleted successfully.")
-
     show expression ("credits_cg6" + lockedtext) as credits_image_2 at credits_scroll_left
     show credits_header "Vocals" as credits_header_2 at credits_text_scroll_right
     show credits_text "Jillian Ashcraft" as credits_text_2 at credits_text_scroll_right
-
     $ lockedtext = "" if persistent.clear[imagenum] else "_locked"
     $ if persistent.clearall: lockedtext = "_clearall"
     $ imagenum += 1
     $ pause(62.45 - (datetime.datetime.now() - starttime).total_seconds())
-
     if not persistent.clearall:
         call updateconsole ("os.remove(\"images/cg/y_cg3.png\")", "y_cg3.png deleted successfully.")
     else:
         call updateconsole_clearall ("os.remove(\"images/cg/y_cg3.png\")", "y_cg3.png deleted successfully.")
-
     show expression ("credits_cg7" + lockedtext) as credits_image_1 at credits_scroll_right
     show credits_header "Special Thanks" as credits_header_1 at credits_text_scroll_left
     show credits_text "Masha Gutin\nKagefumi" as credits_text_1 at credits_text_scroll_left
-
     $ lockedtext = "" if persistent.clear[imagenum] else "_locked"
     $ if persistent.clearall: lockedtext = "_clearall"
     $ imagenum += 1
     $ pause(71.55 - (datetime.datetime.now() - starttime).total_seconds())
-
     if not persistent.clearall:
         call updateconsole ("os.remove(\"images/cg/s_cg1.png\")", "s_cg1.png deleted successfully.")
     else:
         call updateconsole_clearall ("os.remove(\"images/cg/s_cg1.png\")", "s_cg1.png deleted successfully.")
-
     show expression ("credits_cg8" + lockedtext) as credits_image_2 at credits_scroll_left
     show credits_header "Special Thanks" as credits_header_2 at credits_text_scroll_right
     show credits_text "David Evelyn\nCorey Shin" as credits_text_2 at credits_text_scroll_right
@@ -624,38 +577,29 @@ label credits2:
     show n_sticker at credits_sticker_2
     show y_sticker at credits_sticker_3
     show m_sticker at credits_sticker_4
-
     $ pause(80.60 - (datetime.datetime.now() - starttime).total_seconds())
     $ lockedtext = "" if persistent.clear[imagenum] else "_locked"
     $ if persistent.clearall: lockedtext = "_clearall"
     $ imagenum += 1
-
     if not persistent.clearall:
         call updateconsole ("os.remove(\"images/cg/s_cg2.png\")", "s_cg2.png deleted successfully.")
     else:
         call updateconsole_clearall ("os.remove(\"images/cg/s_cg2.png\")", "s_cg2.png deleted successfully.")
-
     $ pause(88.00 - (datetime.datetime.now() - starttime).total_seconds())
-
     show expression ("credits_cg9" + lockedtext) as credits_image_1 at credits_scroll_right
     show credits_header "Special Thanks" as credits_header_1 at credits_text_scroll_left
     show credits_text "Alecia Bardachino\nMatt Naples" as credits_text_1 at credits_text_scroll_left
-
     $ lockedtext = "" if persistent.clear[imagenum] else "_locked"
     $ if persistent.clearall: lockedtext = "_clearall"
     $ pause(95.00 - (datetime.datetime.now() - starttime).total_seconds())
-
     if not persistent.clearall:
         call updateconsole ("os.remove(\"images/cg/s_cg3.png\")", "s_cg3.png deleted successfully.")
     else:
         call updateconsole_clearall ("os.remove(\"images/cg/s_cg3.png\")", "s_cg3.png deleted successfully.")
-
     show expression ("credits_cg10" + lockedtext) as credits_image_2 at credits_scroll_left
     show credits_header "Special Thanks" as credits_header_2 at credits_text_scroll_right
     show credits_text "Monika\n[player]" as credits_text_2 at credits_text_scroll_right
-
     $ pause(104.10 - (datetime.datetime.now() - starttime).total_seconds())
-
     if not persistent.clearall:
         call updateconsole ("os.remove(\"images/cg/m_cg1.png\")", "m_cg1.png deleted successfully.")
     else:
@@ -665,26 +609,18 @@ label credits2:
     call updateconsole ("os.remove(\"game/gui.rpy\")", "gui.rpy deleted successfully.")
     call updateconsole ("os.remove(\"game/menu.rpy\")", "menu.rpy deleted successfully.")
     call updateconsole ("os.remove(\"game/script.rpy\")", "script.rpy deleted successfully.")
-
     $ pause(115.72 - (datetime.datetime.now() - starttime).total_seconds())
-
     call hideconsole
-
     show credits_ts
     show credits_text "made with love by":
         zoom 0.75 xalign 0.5 yalign 0.25 alpha 0 subpixel True
         linear 2.0 alpha 1
         4.5
         linear 2.0 alpha 0
-
     pause 9.3
-
     play sound page_turn
-
     show poem_end with Dissolve(1)
-
     label postcredits_loop:
-
         $ persistent.autoload = "postcredits_loop"
         $ renpy.save_persistent()
         $ config.keymap['game_menu'] = []
@@ -693,14 +629,9 @@ label credits2:
         $ quick_menu = False
         $ config.skipping = False
         $ config.allow_skipping = False
-
         scene black
-
         show poem_end
-
         $ pause()
-
         call screen dialog(message="Error: Script file is missing or corrupt.\nPlease reinstall the game.", ok_action=Quit(confirm=False))
-
         return
-
+# Decompiled by unrpyc: https://github.com/CensoredUsername/unrpyc
