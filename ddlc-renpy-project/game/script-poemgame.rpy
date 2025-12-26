@@ -16,14 +16,14 @@ init python:
 
 
     full_wordlist = []
-    with renpy.file('poemwords.txt') as wordfile:
+    with renpy.file('poemwords.txt', encoding="utf-8") as wordfile:
         for line in wordfile:
-            
+
             line = line.strip()
-            
+
             if line == '' or line[0] == '#': continue
-            
-            
+
+
             x = line.split(',')
             full_wordlist.append(PoemWord(x[0], float(x[1]), float(x[2]), float(x[3])))
 
@@ -249,7 +249,7 @@ label poem(transition=True):
                         wordlist.remove(word)
                     ui.textbutton(word.word, clicked=ui.returns(word), text_style="poemgame_text", xpos=x, ypos=i * 56 + ystart)
                 ui.close()
-            
+
             t = ui.interact()
             if not poemgame_glitch:
                 if t.glitch:
@@ -289,14 +289,14 @@ label poem(transition=True):
                 break
 
         if persistent.playthrough == 0:
-            
+
             if chapter == 1:
                 exec(ch1_choice[0] + "PointTotal += 5")
-            
+
             unsorted_pointlist = {"sayori": sPointTotal, "natsuki": nPointTotal, "yuri": yPointTotal}
             pointlist = sorted(unsorted_pointlist, key=unsorted_pointlist.get)
-            
-            
+
+
             poemwinner[chapter] = pointlist[2]
         else:
             if nPointTotal > yPointTotal: poemwinner[chapter] = "natsuki"

@@ -1,0 +1,60 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/01_imports.rpy", line 13, in import_check
+    importlib.import_module(target)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+ModuleNotFoundError: No module named 'dotenv'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "game/tts.rpy", line 1, in script
+    init python:
+  File "game/tts.rpy", line 2, in <module>
+    import_check("azure.cognitiveservices.speech", "dotenv")
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "game/01_imports.rpy", line 15, in import_check
+    raise Exception(
+    ...<3 lines>...
+    )
+Exception: Could not find the module 'dotenv'. Please add it to the 'requirements.txt' file, then run 'make install'.
+Original error: No module named 'dotenv'
+
+-- Full Traceback ------------------------------------------------------------
+
+Traceback (most recent call last):
+  File "game/01_imports.rpy", line 13, in import_check
+    importlib.import_module(target)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "lib/python3.12/importlib/__init__.py", line 90, in import_module
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'dotenv'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "game/tts.rpy", line 1, in script
+    init python:
+  File "renpy/ast.py", line 1187, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1273, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "game/tts.rpy", line 2, in <module>
+    import_check("azure.cognitiveservices.speech", "dotenv")
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "game/01_imports.rpy", line 15, in import_check
+    raise Exception(
+    ...<3 lines>...
+    )
+Exception: Could not find the module 'dotenv'. Please add it to the 'requirements.txt' file, then run 'make install'.
+Original error: No module named 'dotenv'
+
+macOS-15.6.1-arm64-arm-64bit arm64
+Ren'Py 8.5.0.25111603
+Doki Doki Literature Club! 1.1.1
+Fri Dec 26 13:32:05 2025
